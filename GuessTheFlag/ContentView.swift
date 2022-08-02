@@ -17,7 +17,7 @@ struct ContentView: View {
     @State private var correctAnswer = Int.random(in: 0...2)
     
     var body: some View {
-
+        
         ZStack{
             
             RadialGradient(stops: [.init(color:Color(red: 0.1, green: 0.2, blue: 0.45),
