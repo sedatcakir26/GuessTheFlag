@@ -75,9 +75,9 @@ struct ContentView: View {
                         Button{
                             tappedFlag = number
                             flagTapped(number)
-                            opValue = 0.25
                             withAnimation {
                                 animationAmount += 360
+                                opValue = 0.25
                             }
                         }label: {
                             Image(countries[number])
@@ -87,6 +87,8 @@ struct ContentView: View {
                                 .opacity(tappedFlag == number ? 1 : opValue)
                                 
                                 .scaleEffect(tappedFlag == number ? 1 : opValue)
+                            
+                                .animation(.default, value: opValue)
                               
                         }
                     }
