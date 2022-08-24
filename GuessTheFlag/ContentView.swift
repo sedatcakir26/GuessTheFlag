@@ -37,7 +37,6 @@ struct ContentView: View {
     @State private var opValue = 1.0
     @State private var tappedFlag = -1
     @State private var animationAmount = 0.0
-    @State private var animationAmount1 = 1.0
     @State private var question = 0
     @State private var isGameFinished = false
     @State private var score = 0
@@ -74,7 +73,6 @@ struct ContentView: View {
                     
                     ForEach(0..<3) { number in
                         Button{
-                            animationAmount1 = 0.5
                             tappedFlag = number
                             flagTapped(number)
                             opValue = 0.25
@@ -88,10 +86,8 @@ struct ContentView: View {
                                 .rotation3DEffect(.degrees(tappedFlag == number ? animationAmount : 0), axis: (x: 0, y: 1, z: 0))
                                 .opacity(tappedFlag == number ? 1 : opValue)
                                 
-                                .scaleEffect(tappedFlag == number ? 1 : animationAmount1)
-                                .animation(.default, value: animationAmount1)
-                               
-                                
+                                .scaleEffect(tappedFlag == number ? 1 : opValue)
+                              
                         }
                     }
                     
@@ -157,7 +153,6 @@ struct ContentView: View {
     
     func askQuestion(){
         opValue = 1
-        animationAmount1 = 1
         if !isGameFinished {
             countries = countries.shuffled()
             correctAnswer = Int.random(in: 0...2)
